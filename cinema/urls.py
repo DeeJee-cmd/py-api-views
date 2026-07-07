@@ -10,18 +10,12 @@ from cinema.views import (
     ActorDetail,
 )
 
-router = routers.DefaultRouter()
-router.register(
-    r"cinema_hall",
-    CinemaHallViewSet,
-    basename="cinema_hall",
-)
-router.register(
-    r"movies",
-    MovieViewSet,
-    basename="movies",
-)
 app_name = "cinema"
+
+router = routers.DefaultRouter()
+router.register(r"cinema_hall", CinemaHallViewSet)
+router.register(r"movies", MovieViewSet)
+
 urlpatterns = [
     path("genres/", GenreList.as_view(), name="genre-list"),
     path("genres/<int:pk>/", GenreDetail.as_view(), name="genre-detail"),
